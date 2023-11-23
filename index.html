@@ -56,12 +56,14 @@
 
     <script>
         function login() {
-            // Basic login logic (replace with your authentication logic)
             const username = document.getElementById('username').value;
             const password = document.getElementById('password').value;
 
-            if (username === 'PIERRE' && password === 'PIERRE') {
+            // Replace with your authentication logic
+            if (username === 'user' && password === 'password') {
                 document.getElementById('loginResult').innerHTML = 'Login successful!';
+                // Redirect to another page (replace 'dashboard.html' with your desired page)
+                window.location.href = 'dashboard.html';
             } else {
                 document.getElementById('loginResult').innerHTML = 'Invalid username or password.';
             }

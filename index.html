@@ -1,1 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smash Carts</title>
+    <style>
+        #game-container {
+            position: relative;
+            width: 600px;
+            height: 400px;
+            margin: auto;
+            border: 1px solid #000;
+        }
+        #player {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 80px;
+            background-color: #00f;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="game-container">
+        <div id="player"></div>
+    </div>
+
+    <script>
+        const player = document.getElementById('player');
+        let playerPosition = 50; // Initial player position
+
+        document.addEventListener('keydown', function (event) {
+            if (event.code === 'ArrowLeft' && playerPosition > 0) {
+                playerPosition -= 10;
+            }
+            if (event.code === 'ArrowRight' && playerPosition < 550) {
+                playerPosition += 10;
+            }
+
+            // Update player position
+            player.style.left = playerPosition + 'px';
+        });
+
+        function gameLoop() {
+            // Implement game logic here (e.g., move obstacles, check collisions)
+
+            requestAnimationFrame(gameLoop);
+        }
+
+        gameLoop(); // Start the game loop
+    </script>
+
+</body>
+</html>
 

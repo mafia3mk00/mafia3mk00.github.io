@@ -3,17 +3,89 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Games Page</title>
+    <title>Black Theme Games</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: black;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .game-container {
+            margin: 20px;
+            text-align: center;
+        }
+        h1 {
+            font-size: 24px;
+        }
+        input, button {
+            font-size: 16px;
+        }
+    </style>
 </head>
 <body>
 
-    <h1>Play Games</h1>
+    <div class="game-container">
+        <h1>Guess the Number Game</h1>
+        <p>Guess a number between 1 and 10:</p>
+        <input type="number" id="userGuess" />
+        <button onclick="checkGuess()">Submit Guess</button>
+        <p id="result"></p>
+    </div>
 
-    <h2>Snake Game</h2>
-    <iframe src="https://www.google.com/logos/snake/tx.html" width="600" height="400"></iframe>
+    <div class="game-container">
+        <h1>Rock, Paper, Scissors Game</h1>
+        <p>Choose: Rock, Paper, or Scissors</p>
+        <button onclick="playGame('rock')">Rock</button>
+        <button onclick="playGame('paper')">Paper</button>
+        <button onclick="playGame('scissors')">Scissors</button>
+        <p id="rps-result"></p>
+    </div>
 
-    <h2>Tetris Game</h2>
-    <iframe src="https://tetris.com/play-tetris" width="600" height="800"></iframe>
+    <script>
+        // Guess the Number Game
+        const secretNumber = Math.floor(Math.random() * 10) + 1;
+        let attempts = 0;
+
+        function checkGuess() {
+            const userGuess = parseInt(document.getElementById('userGuess').value);
+
+            if (!isNaN(userGuess)) {
+                attempts++;
+
+                if (userGuess === secretNumber) {
+                    document.getElementById('result').innerHTML = `Congratulations! You guessed the correct number in ${attempts} attempts.`;
+                } else {
+                    const hint = userGuess < secretNumber ? 'Too low!' : 'Too high!';
+                    document.getElementById('result').innerHTML = `${hint} Try again.`;
+                }
+            } else {
+                document.getElementById('result').innerHTML = 'Please enter a valid number.';
+            }
+        }
+
+        // Rock, Paper, Scissors Game
+        function playGame(playerChoice) {
+            const choices = ['rock', 'paper', 'scissors'];
+            const computerChoice = choices[Math.floor(Math.random() * 3)];
+
+            if (playerChoice === computerChoice) {
+                document.getElementById('rps-result').innerHTML = 'It\'s a tie!';
+            } else if (
+                (playerChoice === 'rock' && computerChoice === 'scissors') ||
+                (playerChoice === 'paper' && computerChoice === 'rock') ||
+                (playerChoice === 'scissors' && computerChoice === 'paper')
+            ) {
+                document.getElementById('rps-result').innerHTML = 'You win!';
+            } else {
+                document.getElementById('rps-result').innerHTML = 'You lose! Try again.';
+            }
+        }
+    </script>
 
 </body>
 </html>

@@ -1,91 +1,58 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Black Theme Games</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: black;
-            color: white;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-        }
-        .game-container {
-            margin: 20px;
-            text-align: center;
-        }
-        h1 {
-            font-size: 24px;
-        }
-        input, button {
-            font-size: 16px;
-        }
-    </style>
+<style>
+body {
+    background-color: black;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+.games {
+    display: flex;
+    gap: 20px;
+}
+.game {
+    width: 200px;
+    height: 200px;
+    position: relative;
+}
+.game a {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+}
+.game img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+</style>
 </head>
 <body>
-
-    <div class="game-container">
-        <h1>Guess the Number Game</h1>
-        <p>Guess a number between 1 and 10:</p>
-        <input type="number" id="userGuess" />
-        <button onclick="checkGuess()">Submit Guess</button>
-        <p id="result"></p>
+<div class="games">
+    <div class="game">
+        <a href="https://www.youtube.com/watch?v=JmEUhgL68t8" target="_blank">
+            <img src="https://upload.wikimedia.org/wikipedia/en/9/9a/Smash_logo.png" alt="Smash Carts">
+        </a>
     </div>
-
-    <div class="game-container">
-        <h1>Rock, Paper, Scissors Game</h1>
-        <p>Choose: Rock, Paper, or Scissors</p>
-        <button onclick="playGame('rock')">Rock</button>
-        <button onclick="playGame('paper')">Paper</button>
-        <button onclick="playGame('scissors')">Scissors</button>
-        <p id="rps-result"></p>
+    <div class="game">
+        <a href="https://www.youtube.com/watch?v=Tm6EWvXOxq4" target="_blank">
+            <img src="https://www.thinkwithgoogle.com/featured-video/what-makes-games-engaging/static/files/media/header/video_still.jpg" alt="Slope">
+        </a>
     </div>
-
-    <script>
-        // Guess the Number Game
-        const secretNumber = Math.floor(Math.random() * 10) + 1;
-        let attempts = 0;
-
-        function checkGuess() {
-            const userGuess = parseInt(document.getElementById('userGuess').value);
-
-            if (!isNaN(userGuess)) {
-                attempts++;
-
-                if (userGuess === secretNumber) {
-                    document.getElementById('result').innerHTML = `Congratulations! You guessed the correct number in ${attempts} attempts.`;
-                } else {
-                    const hint = userGuess < secretNumber ? 'Too low!' : 'Too high!';
-                    document.getElementById('result').innerHTML = `${hint} Try again.`;
-                }
-            } else {
-                document.getElementById('result').innerHTML = 'Please enter a valid number.';
-            }
-        }
-
-        // Rock, Paper, Scissors Game
-        function playGame(playerChoice) {
-            const choices = ['rock', 'paper', 'scissors'];
-            const computerChoice = choices[Math.floor(Math.random() * 3)];
-
-            if (playerChoice === computerChoice) {
-                document.getElementById('rps-result').innerHTML = 'It\'s a tie!';
-            } else if (
-                (playerChoice === 'rock' && computerChoice === 'scissors') ||
-                (playerChoice === 'paper' && computerChoice === 'rock') ||
-                (playerChoice === 'scissors' && computerChoice === 'paper')
-            ) {
-                document.getElementById('rps-result').innerHTML = 'You win!';
-            } else {
-                document.getElementById('rps-result').innerHTML = 'You lose! Try again.';
-            }
-        }
-    </script>
-
-</body>
-</html>
+    <div class="game">
+        <a href="https://www.youtube.com/watch?v=AwycRy_iMb4" target="_blank">
+            <img src="https://www.game-maker.net/images/1.127.254774415071743041433258589159597286016.jpg" alt="Cookie Clicker">
+        </a>
+    </div>
+    <div class="game">
+        <a href="https://www.youtube.com/watch?v=CvjMsQI_VZc" target="_blank">
+            <img src="https://thumbor.forbes.com/thumbor/960x0/https%3A%2F%2Fspecials-images.forbesimg.com%2Fimageserve%2F5db644932326f50006b746b5%2F480x480.jpg%3Fbackground%3D000000" alt="Fortnite Clicker">
+        </

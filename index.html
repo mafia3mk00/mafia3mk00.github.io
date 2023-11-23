@@ -40,3 +40,77 @@
     </div>
 </body>
 </html>
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #333;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .login-container {
+            text-align: center;
+        }
+        h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        input {
+            font-size: 16px;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+        button {
+            font-size: 18px;
+            padding: 10px 20px;
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="login-container">
+        <h1>Login</h1>
+        <form id="loginForm">
+            <input type="text" id="username" placeholder="Username" required>
+            <br>
+            <input type="password" id="password" placeholder="Password" required>
+            <br>
+            <button type="button" onclick="login()">Login</button>
+        </form>
+        <p id="loginResult"></p>
+    </div>
+
+    <script>
+        function login() {
+            // Basic login logic (replace with your authentication logic)
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            if (username === 'user' && password === 'password') {
+                document.getElementById('loginResult').innerHTML = 'Login successful!';
+            } else {
+                document.getElementById('loginResult').innerHTML = 'Invalid username or password.';
+            }
+        }
+    </script>
+
+</body>
+</html>

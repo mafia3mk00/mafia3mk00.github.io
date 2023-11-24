@@ -19,6 +19,7 @@
         }
 
         .game {
+            position: relative;
             width: 25%;
             padding: 20px;
             text-align: center;
@@ -26,14 +27,30 @@
             margin: 10px;
             cursor: pointer;
         }
+
+        .game-code {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
     </style>
 </head>
 <body>
 
 <div class="game-container">
     <div class="game" id="game1" onclick="goFullscreen('game1')">Game 1 Code</div>
+    
     <div class="game" id="game2" onclick="goFullscreen('game2')">Game 2 Code</div>
-    <div class="game" id="game3" onclick="goFullscreen('game3')">Game 3 Code</div>
+    
+    <div class="game" id="game3" onclick="goFullscreen('game3')">
+        Cookie Clicker
+        <div class="game-code">
+            <p>Cookie Clicker Code</p>
+            <a href="https://orteil.dashnet.org/cookieclicker/" target="_blank">Play Cookie Clicker</a>
+        </div>
+    </div>
+    
     <div class="game" id="game4" onclick="goFullscreen('game4')">Game 4 Code</div>
 </div>
 

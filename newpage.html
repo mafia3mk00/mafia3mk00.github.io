@@ -4,52 +4,110 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gaming Page</title>
-    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            background-color: #ADD8E6;
+            margin: 0;
+            font-family: 'Verdana', sans-serif; /* Changed font to Verdana */
+            display: flex;
+            flex-direction: column; /* Align items in a column */
+            align-items: center; /* Center the content vertically */
+            min-height: 100vh;
+        }
+
+        h1 {
+            margin-bottom: 20px; /* Add space below the title */
+        }
+
+        .game-container {
+            display: flex;
+            justify-content: center; /* Center the games horizontally */
+            width: 70%; /* Adjust the width as needed */
+        }
+
+        .game {
+            position: relative;
+            flex: 0 0 25%; /* 25% width for each game, you can adjust this as needed */
+            padding: 20px;
+            text-align: center;
+            background-color: #FFFFFF;
+            margin: 10px;
+            cursor: pointer;
+        }
+
+        .start-button {
+            background-color: #000000;
+            color: #FFFFFF;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+            width: 80%;
+            margin: 10px auto;
+            display: block;
+        }
+    </style>
 </head>
 <body>
-    <header>
-        <h1>Welcome to Our Gaming Page</h1>
-    </header>
-    <main>
-        <section class="game-section">
-            <h2>Popular Games</h2>
-            <div class="game-list">
-                <div class="game">
-                    <img src="slope.jpg" alt="Slope">
-                    <h3>Slope</h3>
-                    <iframe src="slope.html" width="50%" height="200" frameborder="0"></iframe>
-                    <button onclick="fullscreen(0)">Fullscreen</button>
-                </div>
-                <div class="game">
-                    <img src="cookieclicker.jpg" alt="Cookie Clicker">
-                    <h3>Cookie Clicker</h3>
-                    <iframe src="cookieclicker.html" width="50%" height="200" frameborder="0"></iframe>
-                    <button onclick="fullscreen(1)">Fullscreen</button>
-                </div>
-                <div class="game">
-                    <img src="smashkarts.jpg" alt="Smash Karts">
-                    <h3>Smash Karts</h3>
-                    <iframe src="smashkarts.html" width="50%" height="200" frameborder="0"></iframe>
-                    <button onclick="fullscreen(2)">Fullscreen</button>
-                </div>
-                <div class="game">
-                    <img src="flappybird.jpg" alt="Flappy Bird">
-                    <h3>Flappy Bird</h3>
-                    <iframe src="flappybird.html" width="50%" height="200" frameborder="0"></iframe>
-                    <button onclick="fullscreen(3)">Fullscreen</button>
-                </div>
-            </div>
-        </section>
-    </main>
-    <footer>
-        <p>&copy; UNBLOCKED GAMES</p>
-    </footer>
 
-    <script>
-        function fullscreen(index) {
-            var iframes = document.getElementsByTagName('iframe');
-            iframes[index].requestFullscreen();
+<h1>GAMES</h1>
+
+<div class="game-container">
+    <div class="game" id="game1" onclick="startFullscreen('game1')">
+        Game 1
+        <button class="start-button">Start Game</button>
+    </div>
+    
+    <div class="game" id="game2" onclick="startFullscreen('game2')">
+        Game 2
+        <button class="start-button">Start Game</button>
+    </div>
+    
+    <div class="game" id="game3" onclick="startFullscreen('game3')">
+        Game 3
+        <button class="start-button">Start Game</button>
+    </div>
+
+    <!-- New Games -->
+    <div class="game" id="game4" onclick="startFullscreen('game4')">
+        Game 4
+        <button class="start-button">Start Game</button>
+    </div>
+
+    <div class="game" id="game5" onclick="startFullscreen('game5')">
+        Game 5
+        <button class="start-button">Start Game</button>
+    </div>
+
+    <div class="game" id="game6" onclick="startFullscreen('game6')">
+        Game 6
+        <button class="start-button">Start Game</button>
+    </div>
+
+    <div class="game" id="game7" onclick="startFullscreen('game7')">
+        Game 7
+        <button class="start-button">Start Game</button>
+    </div>
+
+    <div class="game" id="game8" onclick="startFullscreen('game8')">
+        Game 8
+        <button class="start-button">Start Game</button>
+    </div>
+</div>
+
+<script>
+    function startFullscreen(elementId) {
+        const element = document.getElementById(elementId);
+        if (element.requestFullscreen) {
+            element.requestFullscreen();
+        } else if (element.mozRequestFullScreen) { /* Firefox */
+            element.mozRequestFullScreen();
+        } else if (element.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
+            element.webkitRequestFullscreen();
+        } else if (element.msRequestFullscreen) { /* IE/Edge */
+            element.msRequestFullscreen();
         }
-    </script>
+    }
+</script>
+
 </body>
 </html>

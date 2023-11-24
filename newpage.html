@@ -3,35 +3,54 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Favorite Games</title>
+    <title>Gaming Page</title>
     <style>
         body {
+            background-color: #ADD8E6;
+            margin: 0;
             font-family: Arial, sans-serif;
+        }
+
+        .game-container {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .game {
+            width: 25%;
+            padding: 20px;
             text-align: center;
-        }
-        h1 {
-            color: #333;
-        }
-        ul {
-            list-style-type: none;
-            padding: 0;
-        }
-        li {
+            background-color: #FFFFFF;
             margin: 10px;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            display: inline-block;
+            cursor: pointer;
         }
     </style>
 </head>
 <body>
-    <h1>My Favorite Games</h1>
-    <ul>
-        <li>Chess</li>
-        <li>Portal</li>
-        <li>The Legend of Zelda: Breath of the Wild</li>
-        <!-- Add more games as needed -->
-    </ul>
+
+<div class="game-container">
+    <div class="game" id="game1" onclick="goFullscreen('game1')">Game 1 Code</div>
+    <div class="game" id="game2" onclick="goFullscreen('game2')">Game 2 Code</div>
+    <div class="game" id="game3" onclick="goFullscreen('game3')">Game 3 Code</div>
+    <div class="game" id="game4" onclick="goFullscreen('game4')">Game 4 Code</div>
+</div>
+
+<script>
+    function goFullscreen(elementId) {
+        const element = document.getElementById(elementId);
+        if (element.requestFullscreen) {
+            element.requestFullscreen();
+        } else if (element.mozRequestFullScreen) { /* Firefox */
+            element.mozRequestFullScreen();
+        } else if (element.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
+            element.webkitRequestFullscreen();
+        } else if (element.msRequestFullscreen) { /* IE/Edge */
+            element.msRequestFullscreen();
+        }
+    }
+</script>
+
 </body>
 </html>

@@ -38,9 +38,22 @@
         button:hover {
             background-color: #45a049;
         }
+        #welcomeMessage {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: #4caf50;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            display: none;
+        }
     </style>
 </head>
 <body>
+
+    <div id="welcomeMessage">WELCOME</div>
 
     <div class="login-container">
         <h1>Login</h1>
@@ -62,6 +75,10 @@
             // Replace with your authentication logic
             if (username === 'P' && password === 'P') {
                 document.getElementById('loginResult').innerHTML = 'Login successful!';
+                
+                // Show welcome message
+                document.getElementById('welcomeMessage').style.display = 'block';
+                
                 // Redirect to another page (replace 'newpage.html' with your desired page)
                 window.location.href = 'newpage.html';
             } else {

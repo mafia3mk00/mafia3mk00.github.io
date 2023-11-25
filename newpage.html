@@ -33,6 +33,7 @@
             background-color: #FFFFFF;
             margin: 10px;
             cursor: pointer;
+            overflow: hidden;
         }
 
         .start-button {
@@ -64,9 +65,9 @@
             padding: 10px;
             border: none;
             cursor: pointer;
-            width: 80%;
-            margin: 10px auto;
-            display: block;
+            position: absolute;
+            top: 10px;
+            right: 10px;
         }
     </style>
 </head>
@@ -75,54 +76,26 @@
 <h1>GAMES</h1>
 
 <div class="game-container">
-    <div class="game" id="game1" onclick="startFullscreen('game1')">
-        <iframe src="https://example.com/slope-game" frameborder="0" allowfullscreen></iframe>
-        Slope
-        <button class="start-button">Start Game</button>
-    </div>
-
     <div class="game" id="game2">
         <canvas id="gameCanvas"></canvas>
         Smash Karts
-        <button class="start-button" onclick="startGame()">Start Game</button>
-        <button class="fullscreen-button" onclick="startFullscreen()">Fullscreen</button>
-    </div>
-
-    <div class="game" id="game3" onclick="startFullscreen('game3')">
-        <iframe src="https://example.com/cookie-clicker" frameborder="0" allowfullscreen></iframe>
-        Cookie Clicker
-        <button class="start-button">Start Game</button>
-    </div>
-
-    <!-- New Games -->
-    <div class="game" id="game4" onclick="startFullscreen('game4')">
-        <iframe src="https://example.com/race-game" frameborder="0" allowfullscreen></iframe>
-        Race
-        <button class="start-button">Start Game</button>
+        <button class="start-button" onclick="startGame('game2')">Start Game</button>
+        <button class="fullscreen-button" onclick="openFullscreenPage('https://mafia3mk00.github.io/smashkarts.html')">Fullscreen</button>
     </div>
 </div>
 
 <script>
-    function startFullscreen(elementId) {
-        const element = document.getElementById(elementId) || document.documentElement;
-
-        if (element.requestFullscreen) {
-            element.requestFullscreen();
-        } else if (element.mozRequestFullScreen) { 
-            element.mozRequestFullScreen();
-        } else if (element.webkitRequestFullscreen) { 
-            element.webkitRequestFullscreen();
-        } else if (element.msRequestFullscreen) { 
-            element.msRequestFullscreen();
-        }
+    function startGame(elementId) {
+        alert(`${elementId} Game Started!`);
+        initializeGame(elementId);
     }
 
-    function startGame() {
-        alert("Smash Karts Game Started!");
-        initializeGame();
+    function openFullscreenPage(url) {
+        const fullscreenWindow = window.open(url, '_blank');
+        fullscreenWindow.document.documentElement.requestFullscreen();
     }
 
-    function initializeGame() {
+    function initializeGame(elementId) {
         const gameCanvas = document.getElementById("gameCanvas");
         const ctx = gameCanvas.getContext("2d");
 

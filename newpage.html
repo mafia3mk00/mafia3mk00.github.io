@@ -21,7 +21,7 @@
 
         .game-container {
             display: flex;
-            justify-content: center;
+            justify-content: space-around; /* Adjusted for equal spacing */
             width: 70%;
         }
 
@@ -48,15 +48,10 @@
         }
 
         .game iframe,
-        #gameCanvas {
+        .game canvas {
             width: 100%;
             height: 300px;
             border: none;
-        }
-
-        canvas {
-            display: block;
-            border: 2px solid #000;
         }
 
         .fullscreen-button {
@@ -76,11 +71,222 @@
 <h1>GAMES</h1>
 
 <div class="game-container">
+    <div class="game" id="game1">
+        <iframe src="https://example.com/game1" frameborder="0" allowfullscreen></iframe>
+        SMASH KARTS
+        <button class="start-button" onclick="startGame('game1')">Start Game</button>
+        <button class="fullscreen-button" onclick="openFullscreenPage('https://example.com/game1')">Fullscreen</button>
+    </div>
+
     <div class="game" id="game2">
-        <canvas id="gameCanvas"></canvas>
-        Smash Karts
+        <iframe src="https://example.com/game2" frameborder="0" allowfullscreen></iframe>
+        COOKIE CLICKER
         <button class="start-button" onclick="startGame('game2')">Start Game</button>
-        <button class="fullscreen-button" onclick="openFullscreenPage('https://mafia3mk00.github.io/smashkarts.html')">Fullscreen</button>
+        <button class="fullscreen-button" onclick="openFullscreenPage('https://example.com/game2')">Fullscreen</button>
+    </div>
+
+    <div class="game" id="game3">
+        <iframe src="https://example.com/game3" frameborder="0" allowfullscreen></iframe>
+        SLOPE 
+        <button class="start-button" onclick="startGame('game3')">Start Game</button>
+        <button class="fullscreen-button" onclick="openFullscreenPage('https://example.com/game3')">Fullscreen</button>
+    </div>
+
+    <div class="game" id="game4">
+        <iframe src="https://example.com/game4" frameborder="0" allowfullscreen></iframe>
+        Game 4
+        <button class="start-button" onclick="startGame('game4')">Start Game</button>
+        <button class="fullscreen-button" onclick="openFullscreenPage('https://example.com/game4')">Fullscreen</button>
+    </div>
+</div>
+
+<script>
+    function startGame(elementId) {
+        alert(`${elementId} Game Started!`);
+        initializeGame(elementId);
+    }
+
+    function openFullscreenPage(url) {
+        const fullscreenWindow = window.open(url, '_blank');
+        fullscreenWindow.document.documentElement.requestFullscreen();
+    }
+
+    function initializeGame(elementId) {
+        const gameCanvas = document.getElementById("gameCanvas");
+        const ctx = gameCanvas.getContext("2d");
+
+        // Set canvas size
+        gameCanvas.width = window.innerWidth;
+        gameCanvas.height = window.innerHeight;
+
+        // Player object
+        const player = {
+            x: gameCanvas.width / 2,
+            y: gameCanvas.height / 2,
+            size: 20,
+            color: "#FF0000",
+            speed: 5,
+            dx: 0,
+            dy: 0
+        };
+
+        // Event listeners for player movement
+        window.addEventListener("keydown", handleKeyDown);
+        window.addEventListener("keyup", handleKeyUp);
+
+        function handleKeyDown(e) {
+            if (e.key === "ArrowUp" || e.key === "Up") {
+                player.dy = -player.speed;
+            } else if (e.key === "ArrowDown" || e.key === "Down") {
+                player.dy = player.speed;
+            } else if (e.key === "ArrowLeft" || e.key === "Left") {
+                player.dx = -player.speed;
+            } else if (e.key === "ArrowRight" || e.key === "Right") {
+                player.dx = player.speed;
+            }
+        }
+
+        function handleKeyUp(e) {
+            if (
+                e.key === "ArrowUp" ||
+                e.key === "Up" ||
+                e.key === "ArrowDown" ||
+                e.key === "Down"
+            ) {
+                player.dy = 0;
+            } else if (
+                e.key === "ArrowLeft" ||
+                e.key === "Left" ||
+                e.key === "ArrowRight" ||
+                e.key === "Right"
+            ) {
+                player.dx = 0;
+            }
+        }
+
+        // Update function
+        function update() {
+            // Move player
+            player.x += player.dx;
+            player.y += player.dy;
+
+            // Draw player
+            ctx.clearRect(0, 0, gameCanvas.width, gameCanvas.height);
+            ctx.fillStyle = player.color;
+            ctx.beginPath();
+            ctx.arc(player.x, player.y, player.size, 0, Math.PI * 2);
+            ctx.fill();
+
+            // Repeat the update function
+            requestAnimationFrame(update);
+        }
+
+        // Start the game loop
+        update();
+    }
+</script>
+
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gaming Page</title>
+    <style>
+        body {
+            background-color: #ADD8E6;
+            margin: 0;
+            font-family: 'Verdana', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+        }
+
+        .game-container {
+            display: flex;
+            justify-content: space-around; /* Adjusted for equal spacing */
+            width: 70%;
+        }
+
+        .game {
+            position: relative;
+            flex: 0 0 25%;
+            padding: 20px;
+            text-align: center;
+            background-color: #FFFFFF;
+            margin: 10px;
+            cursor: pointer;
+            overflow: hidden;
+        }
+
+        .start-button {
+            background-color: #000000;
+            color: #FFFFFF;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+            width: 80%;
+            margin: 10px auto;
+            display: block;
+        }
+
+        .game iframe,
+        .game canvas {
+            width: 100%;
+            height: 300px;
+            border: none;
+        }
+
+        .fullscreen-button {
+            background-color: #000000;
+            color: #FFFFFF;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<h1>MORE GAMES</h1>
+
+<div class="game-container">
+    <div class="game" id="game1">
+        <iframe src="https://example.com/game1" frameborder="0" allowfullscreen></iframe>
+        Game 5
+        <button class="start-button" onclick="startGame('game1')">Start Game</button>
+        <button class="fullscreen-button" onclick="openFullscreenPage('https://example.com/game1')">Fullscreen</button>
+    </div>
+
+    <div class="game" id="game2">
+        <iframe src="https://example.com/game2" frameborder="0" allowfullscreen></iframe>
+        Game 6
+        <button class="start-button" onclick="startGame('game2')">Start Game</button>
+        <button class="fullscreen-button" onclick="openFullscreenPage('https://example.com/game2')">Fullscreen</button>
+    </div>
+
+    <div class="game" id="game3">
+        <iframe src="https://example.com/game3" frameborder="0" allowfullscreen></iframe>
+        Game 7
+        <button class="start-button" onclick="startGame('game3')">Start Game</button>
+        <button class="fullscreen-button" onclick="openFullscreenPage('https://example.com/game3')">Fullscreen</button>
+    </div>
+
+    <div class="game" id="game4">
+        <iframe src="https://example.com/game4" frameborder="0" allowfullscreen></iframe>
+        Game 8
+        <button class="start-button" onclick="startGame('game4')">Start Game</button>
+        <button class="fullscreen-button" onclick="openFullscreenPage('https://example.com/game4')">Fullscreen</button>
     </div>
 </div>
 
